@@ -9,6 +9,7 @@ const uint8_t triggerPin = 1;
 const uint8_t servoPin = 7;
 const uint8_t clkPin = 9;
 const uint8_t dioPin = 8;
+const uint8_t ledPin = 5;
 
 Servo myServo;
 TM1637 tm(clkPin, dioPin);
@@ -56,6 +57,8 @@ void setup() {
   pinMode(triggerPin, INPUT_PULLUP);
   pinMode(hw_clkPin, INPUT_PULLUP);
   pinMode(dtPin, INPUT);
+  pinMode(ledPin, OUTPUT);
+  digitalWrite(ledPin, LOW);
   LeftRight = true;
   rotation = digitalRead(hw_clkPin);
   attachInterrupt(digitalPinToInterrupt(triggerPin), startStop, CHANGE);
@@ -87,9 +90,11 @@ void loop() {
 
   if(i%8==0){
     if(actived){
+      digitalWrite(ledPin, HIGH);
       displayNumber(cachedPressure);
       myServo.write(90);
     } else {
+      digitalWrite(ledPin, LOW);
       displayNumber(soglia);
       myServo.write(0);
     }
