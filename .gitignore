@@ -1,0 +1,20 @@
+# IDE and editor settings
+.vscode/
+.claude/
+.idea/
+*.swp
+*.swo
+*~
+
+# Arduino build artifacts
+build/
+*.elf
+*.hex
+*.bin
+*.map
+*.d
+*.o
+
+# OS files
+.DS_Store
+Thumbs.db
